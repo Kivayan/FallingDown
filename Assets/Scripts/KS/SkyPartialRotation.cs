@@ -15,21 +15,6 @@ public class SkyPartialRotation : MonoBehaviour {
     float yRot;
     float zAngle;
     // Use this for initialization
-    void Start () {
-		
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-       
-
-        
-        
-        //DebugPanel.Log("z", "yrot", source.rotation.eulerAngles.z);
-        
-    }
 
     private void FixedUpdate()
     {

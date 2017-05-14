@@ -17,10 +17,9 @@ public class Rotate : MonoBehaviour {
         if (gyroSteer)
             Input.gyro.enabled = true;
         SetSliderValues();
-       
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (gyroSteer)
             GyroSteer();

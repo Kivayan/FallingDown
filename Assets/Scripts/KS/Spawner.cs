@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
 
 
     public GameObject[] prefabs;
@@ -16,14 +17,13 @@ public class Spawner : MonoBehaviour {
     public bool spawning = false;
 
 
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    void Update()
+    {
 
         DebugSpawn();
 
@@ -32,11 +32,11 @@ public class Spawner : MonoBehaviour {
 
         StartCoroutine(IntervalSpawn());
         DebugInfo();
-	}
+    }
 
     private IEnumerator IntervalSpawn()
     {
-        
+
         FinalSpawn();
         spawning = true;
 
@@ -62,7 +62,7 @@ public class Spawner : MonoBehaviour {
         float z = 0;
 
 
-        Vector3[] positions = new Vector3[] 
+        Vector3[] positions = new Vector3[]
         {
             new Vector3(y,x,z),
             new Vector3(-y,x,z),
@@ -78,7 +78,7 @@ public class Spawner : MonoBehaviour {
 
     private void DebugSpawn()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             FinalSpawn();
         }
@@ -86,10 +86,10 @@ public class Spawner : MonoBehaviour {
 
     private void SpawnPrefab(Vector3 spot)
     {
-       float x = Random.Range(-180, 180);
-       Quaternion rot0 = Quaternion.Euler(new Vector3(0, 0, x));
-       var spawned =  Instantiate(RandomPrefab(), spot, rot0);
-       spawned.transform.parent = spawnParent.transform;
+        float x = Random.Range(-180, 180);
+        Quaternion rot0 = Quaternion.Euler(new Vector3(0, 0, x));
+        var spawned = Instantiate(RandomPrefab(), spot, rot0);
+        spawned.transform.parent = spawnParent.transform;
     }
 
     private GameObject RandomPrefab()
@@ -98,13 +98,13 @@ public class Spawner : MonoBehaviour {
         return prefabs[x];
     }
 
-   private Vector3 GetSpawnPosition()
+    private Vector3 GetSpawnPosition()
     {
         Vector3 spawnPosition = new Vector3();
         bool test = false;
         int testCount = 0;
         while (test == false)
-        {   
+        {
             spawnPosition = randomSpawnPosition();
             test = !Physics.CheckSphere(spawnPosition, checkSphereRadius);
             if (testCount >= 500)
@@ -121,5 +121,5 @@ public class Spawner : MonoBehaviour {
     {
         DebugPanel.Log("spawning", spawning);
     }
-       
+
 }

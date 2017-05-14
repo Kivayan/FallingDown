@@ -5,13 +5,6 @@ using UnityEngine;
 public class PlayerModelRotator : MonoBehaviour {
 
     
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
